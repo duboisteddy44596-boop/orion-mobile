@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0b1329">
+<title>ORION Mobile</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#0b1329;color:#fff}
+body{padding:10px}
+button{font:inherit}
+.app{width:100%;max-width:400px;min-height:calc(100vh - 20px);margin:auto;background:#0f1a36;border:1px solid #263866;border-radius:18px;padding:15px;box-shadow:0 10px 30px #0008}
+.header{display:flex;align-items:center;justify-content:space-between;padding-bottom:13px;margin-bottom:15px;border-bottom:1px solid #263866}
+.logo{color:#00a8ff;font-size:20px;font-weight:800;letter-spacing:.4px}
+.badge{background:#009432;padding:5px 8px;border-radius:12px;font-size:10px;font-weight:800}
+.info{background:#17264e;border-left:4px solid #00a8ff;border-radius:8px;padding:12px;margin-bottom:15px}
+.info h2{font-size:14px;margin-bottom:8px}
+.info p{font-size:11px;color:#aebbd2;margin:4px 0}
+.menu{display:flex;flex-direction:column;gap:10px}
+.card{width:100%;border:1px solid #2a3d75;border-radius:11px;background:#17264e;color:#fff;padding:14px;text-align:left;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:.15s}
+.card:active{transform:scale(.98);background:#203568}
+.title{font-size:13px;font-weight:700}
+.sub{font-size:10px;color:#8fa0c2;margin-top:5px}
+.arrow{font-size:25px;color:#00a8ff}
+.screen{display:none;animation:in .18s ease}
+@keyframes in{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:none}}
+.back{border:0;background:none;color:#00a8ff;font-weight:700;font-size:13px;padding:4px 0;margin-bottom:14px;cursor:pointer}
+.panel{background:#17264e;border:1px solid #2a3d75;border-radius:11px;padding:15px}
+.panel h2{color:#00a8ff;font-size:16px;margin-bottom:13px}
+.panel h3{font-size:12px;margin:14px 0 7px}
+.panel p,.panel li{font-size:12px;line-height:1.55;color:#dce3ef}
+.panel ul{padding-left:18px}
+.alert{background:#7e2525;border:1px solid #c23b3b;border-radius:7px;padding:10px;font-size:11px;font-weight:800;margin-bottom:13px}
+.video{height:150px;border:1px solid #334a86;border-radius:8px;background:#050810;display:flex;align-items:center;justify-content:center;color:#aebbd2;font-size:12px;margin-top:8px}
+.table{width:100%;border-collapse:collapse;margin-top:9px;font-size:11px}
+.table th,.table td{border:1px solid #304577;padding:8px;text-align:left}
+.table th{color:#00a8ff;background:#101c38}
+.table td{color:#dce3ef}
+.action{width:100%;border:0;border-radius:7px;background:#00a8ff;color:#fff;padding:12px;margin-top:15px;font-weight:800;cursor:pointer}
+.note{margin-top:15px;padding:9px;background:#101b35;border:1px solid #263866;border-radius:7px;color:#8495b6;font-size:9px;line-height:1.4}
+</style>
+</head>
+
+<body>
+<main class="app">
+
+<section id="home">
+  <header class="header">
+    <div class="logo">ORION Mobile</div>
+    <div class="badge">ATA 2000 ACTIVE</div>
+  </header>
+
+  <div class="info">
+    <h2>BOÎTIER ESSUIE-GLACE — SEFEE</h2>
+    <p><b>P/N :</b> 704A 46 580 099</p>
+    <p><b>S/N :</b> 648 QA</p>
+    <p><b>CAGE :</b> F9543</p>
+    <p><b>Mod Status :</b> A</p>
+  </div>
+
+  <div class="menu">
+    <button class="card" onclick="openDetail('mma')">
+      <div><div class="title">📖 CARTE DE TRAVAIL MMA</div><div class="sub">Dépose-Pose & Consignes — MMA 30-42-02</div></div>
+      <span class="arrow">›</span>
+    </button>
+
+    <button class="card" onclick="openDetail('wdm')">
+      <div><div class="title">⚡ WDM — CONNECTEURS A & B</div><div class="sub">Schéma des 13 broches & tension 28V</div></div>
+      <span class="arrow">›</span>
+    </button>
+
+    <button class="card" onclick="openDetail('ipc')">
+      <div><div class="title">🔧 CATALOGUE PIÈCES IPC</div><div class="sub">Éclaté Item 150 & commande</div></div>
+      <span class="arrow">›</span>
+    </button>
+
+    <button class="card" onclick="openDetail('msm')">
+      <div><div class="title">⏱️ PROGRAMME ENTRETIEN MSM</div><div class="sub">Périodicité OTL / OC & suivi FH</div></div>
+      <span class="arrow">›</span>
+    </button>
+  </div>
+
+  <div class="note">Interface de support technique. Les données de maintenance doivent être vérifiées dans la documentation aéronautique applicable avant intervention.</div>
+</section>
+
+<section id="mma" class="screen">
+  <button class="back" onclick="closeDetail()">‹ Retour au menu</button>
+  <div class="panel">
+    <h2>CARTE DE TRAVAIL MMA 30-42-02</h2>
+    <div class="alert">⚠️ COUPER L'ALIMENTATION 28VDC AVANT INTERVENTION</div>
+    <h3>PROCÉDURE DE DÉPOSE</h3>
+    <ul>
+      <li>Desserrer les 4 vis d'attache sur le châssis.</li>
+      <li>Déconnecter la prise A puis la prise B.</li>
+      <li>Pour le remontage, appliquer le couple spécifié par la documentation de maintenance applicable.</li>
+    </ul>
+    <h3>DÉMONSTRATION</h3>
+    <div class="video">▶ Démonstration vidéo du geste technique</div>
+  </div>
+</section>
+
+<section id="wdm" class="screen">
+  <button class="back" onclick="closeDetail()">‹ Retour au menu</button>
+  <div class="panel">
+    <h2>WDM — SCHÉMA ÉLECTRIQUE</h2>
+    <h3>CONNECTEUR A — MAIN POWER</h3>
+    <table class="table">
+      <tr><th>Broche</th><th>Fonction</th></tr>
+      <tr><td>1</td><td>+28VDC</td></tr>
+      <tr><td>2</td><td>Masse</td></tr>
+    </table>
+    <h3>CONNECTEUR B — SIGNAL MOTEUR</h3>
+    <table class="table">
+      <tr><th>Broches</th><th>Fonction</th></tr>
+      <tr><td>3 à 13</td><td>Signaux de vitesse</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="ipc" class="screen">
+  <button class="back" onclick="closeDetail()">‹ Retour au menu</button>
+  <div class="panel">
+    <h2>CATALOGUE IPC — ITEM 150</h2>
+    <p><b>Désignation :</b><br>Boîtier de commande essuie-glace SEFEE</p>
+    <p style="margin-top:10px"><b>Référence :</b><br>704A 46 580 099</p>
+    <p style="margin-top:10px"><b>Item :</b> 150</p>
+    <button class="action" onclick="orderPart()">🛒 Commander la pièce de rechange</button>
+  </div>
+</section>
+
+<section id="msm" class="screen">
+  <button class="back" onclick="closeDetail()">‹ Retour au menu</button>
+  <div class="panel">
+    <h2>PROGRAMME ENTRETIEN MSM</h2>
+    <p><b>Type de suivi :</b><br>On-Condition (OC)</p>
+    <p style="margin-top:10px"><b>Inspection :</b><br>Toutes les 500 FH ou 12 mois.</p>
+    <p style="margin-top:10px"><b>Suivi FH :</b><br>À renseigner selon le programme d'entretien applicable.</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+function openDetail(id) {
+  document.getElementById("home").style.display = "none";
+  document.querySelectorAll(".screen").forEach(function(screen) {
+    screen.style.display = "none";
+  });
+
+  var screen = document.getElementById(id);
+  if (screen) screen.style.display = "block";
+
+  window.scrollTo(0,0);
+}
+
+function closeDetail() {
+  document.querySelectorAll(".screen").forEach(function(screen) {
+    screen.style.display = "none";
+  });
+
+  document.getElementById("home").style.display = "block";
+  window.scrollTo(0,0);
+}
+
+function orderPart() {
+  alert(
+    "PIÈCE SÉLECTIONNÉE\n\n" +
+    "Item : 150\n" +
+    "P/N : 704A 46 580 099\n\n" +
+    "Module de commande à connecter ultérieurement."
+  );
+}
+</script>
+
+</body>
+</html>
